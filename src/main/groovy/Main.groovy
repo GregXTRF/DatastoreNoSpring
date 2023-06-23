@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter
 class Main {
 
     private static final String PROJECT_ID = "brep-playground"
-    private static final String FILE_PATH = "src/main/resources/brep-playground-key.json"
+    private static final String FILE_PATH = "src/main/resources/brep-playground-9227ad82da9d.json"
     private static final String DATASTORE_KIND = "brep_manual_grakowki"
 
     static void main(String[] args) {
@@ -22,7 +22,7 @@ class Main {
 
         Datastore datastore = datastoreOptions.service
         KeyFactory keyFactory = datastore.newKeyFactory().setKind(DATASTORE_KIND)
-        Key key = keyFactory.newKey("keyName")
+        Key key = keyFactory.newKey(new Random().nextLong())
         Entity entity = Entity.newBuilder(key)
                 .set("date_string", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")))
                 .build()
